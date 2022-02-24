@@ -1,0 +1,20 @@
+  @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+  .valid{
+    margin-top: 10px; 
+    margin-bottom: 10px;
+  	font-family: 'Roboto', sans-serif;
+  	font-size: 0.9em;
+    color : green;
+  }
+  .error {
+    margin-top: 10px;
+    font-family: 'Roboto', sans-serif;
+  	font-size: 0.9em;
+  	color : red;
+
+   @media screen and (max-width: 380px) {
+    font-size: 1.0em;
+    width: 70vw;
+   }
+  }

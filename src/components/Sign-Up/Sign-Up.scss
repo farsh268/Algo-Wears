@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.sign-up {
+	display: flex;
+	flex-direction: column;
+	width: 380px;
+
+	@media screen and (max-width: 800px) and (min-width: 400px) {
+		text-align: center;
+		justify-content : center;
+		margin-left: 12px;
+	}
+
+ .title {
+ 	margin: 10px 0 ;
+ }
+}

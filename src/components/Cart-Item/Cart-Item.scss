@@ -1,0 +1,30 @@
+.cart-item {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  margin-bottom: 15px;
+
+  img {
+    width: 30%;
+  }
+
+  .item-details {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 10px 12px;
+
+    @media screen and (max-width: 800px) {
+      margin-top: -12px;
+      padding: 10px 12px;
+    }
+
+    .name {
+      font-size: 16px;
+    }
+  }
+}

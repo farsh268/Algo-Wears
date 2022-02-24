@@ -1,0 +1,76 @@
+.header {
+  height: 70px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+
+  @media screen and (max-width: 800px) {
+    height: 60px;
+    padding: 10px;
+    margin-bottom: 20px;
+    padding-left: 1px;
+  }
+
+  .logo-container {
+    height: 100%;
+    width: 70px;
+    padding: 25px;
+
+    @media screen and (max-width: 800px) {
+      width: 50px;
+      padding: 0;
+    }
+  }
+  img {
+    height: 40px;
+    margin-top: -15px;
+
+    @media screen and (max-width: 800px) {
+      height: 53px;
+      margin-top: -8px;
+    }
+  }
+
+  .options {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    justify-content: flex-end;
+
+    @media screen and (max-width: 800px) {
+      width: 80%;
+    }
+
+    .option {
+      padding: 10px 15px;
+      cursor: pointer;
+      color: var(--backgrod);
+    }
+
+    @media screen and (max-width: 430px) {
+      width: 90%;
+      .option {
+        padding: 10px 6px;
+      }
+    }
+
+    @media screen and(max-width: 350px) {
+      width: 93%;
+      .option {
+        padding: 10px 4px;
+        font-size: 13px;
+      }
+    }
+
+    .sign-in-options {
+      @media screen and (max-width: 800px) {
+        .option {
+          padding: 10px 12px;
+        }
+      }
+    }
+  }
+}
