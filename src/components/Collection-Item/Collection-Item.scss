@@ -28,9 +28,7 @@
   }
  }
 
-  &:-child(5) {
-
-  }
+  
  &:hover {
     .image{
         opacity: 0.8;
@@ -78,12 +76,14 @@
   .name {
   	width: 90%;
   	margin-bottom: 15px;
+    color : #DA8717;
   @media screen and (max-width: 800px) {
     color: #DA8717;
   }
   }
   .price{
   	width: 10%;
+    color : #DA8717;
   @media screen and (max-width: 800px) {
     color: #DA8717;
   }

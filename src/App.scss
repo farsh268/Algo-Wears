@@ -1,6 +1,13 @@
 .App {
   overflow: hidden;
   padding: 20px 40px;
+  min-height: 100vh;
+ 
+  @media screen and (max-width: 500px) {
+    padding: 20px 15px;
+  }
+
+
 }
 
 :root {
@@ -60,6 +67,7 @@ html {
 }
 
 body {
+  background-color: var(--color);
   // font-family: "Open Sans Condensed", sans-serif;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -70,7 +78,7 @@ body {
   margin: 0;
   padding: 0;
   @media screen and (max-width: 800px) {
-    padding: 10px;
+    padding: 0px;
   }
 }
 
@@ -95,6 +103,13 @@ a {
   --back-1: #fdfdfd;
 
   --back-2: #f2f2f2;
+  --forgot :  #1d1959;
+  --form : white;
+  --outkast : grey;
+  --form-press : black;
+  --coin : #fff;
+
+
 
   --l1: #333;
 
@@ -102,11 +117,16 @@ a {
 
   --background: var(--white);
   --border-default: rgba(0, 0, 0, 18%);
-  background-color: var(--background);
+ 
 }
 
 .dark_theme {
+  --coin : black;
+  --form : #1a1a1a;
+  --outkast : whitesmoke;
+  --form-press : grey;
   --background: var(--dark-800);
+  --forgot : #DA8717;
   --border-default: rgba(255, 255, 255, 8%);
   background-color: var(--background);
   --color: white !important;

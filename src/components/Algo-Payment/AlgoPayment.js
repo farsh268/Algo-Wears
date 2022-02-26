@@ -4,10 +4,10 @@ import MyAlgoConnect from "@randlabs/myalgo-connect";
 import { useDispatch } from "react-redux";
 import { formatJsonRpcRequest } from "@json-rpc-tools/utils";
 import QRCodeModal from "algorand-walletconnect-qrcode-modal";
-import AlertModal from "../Payment-Modal/AlertModal";
+import AlertAlgoModal from "../Algo-Payment-Modal/AlertAlgoModal";
 
-const Payment = ({ price }) => {
-  const ASSET_ID = 21364625;
+const AlgoPayment = ({ price }) => {
+  
   const dispatch = useDispatch();
 
   const algod_token = {
@@ -29,37 +29,11 @@ const Payment = ({ price }) => {
         .accountInformation(isThereAddress)
         .do();
 
-      // check if the voter address has Choice
-      const containsChoice = myAccountInfo.assets
-        ? myAccountInfo.assets.some(
-            (element) => element["asset-id"] === ASSET_ID
-          )
-        : false;
 
-      // if the address has no ASAs
-      if (myAccountInfo.assets.length === 0) {
-        dispatch({
-          type: "alert_modal",
-          alertContent:
-            "You need to opt-in to Choice Coin in your Algorand Wallet.",
-        });
-        return;
-      }
+      //   get balance of algo
+      const balance = myAccountInfo.amount/1000000
+      console.log(balance)
 
-      if (!containsChoice) {
-        dispatch({
-          type: "alert_modal",
-          alertContent:
-            "You need to opt-in to Choice Coin in your Algorand Wallet.",
-        });
-        return;
-      }
-      //   get balance of the voter
-      const balance = myAccountInfo.assets
-        ? myAccountInfo.assets.find(
-            (element) => element["asset-id"] === ASSET_ID
-          ).amount / 100
-        : 0;
       if (Data.amount > balance) {
         dispatch({
           type: "alert_modal",
@@ -70,14 +44,13 @@ const Payment = ({ price }) => {
       }
 
       const suggestedParams = await algodClient.getTransactionParams().do();
-      const amountToSend = Data.amount * 100;
+      const amountToSend = Data.amount*1000000;
 
-      const txn = algosdk.makeAssetTransferTxnWithSuggestedParamsFromObject({
+      const txn = algosdk.makePaymentTxnWithSuggestedParamsFromObject({
         from: isThereAddress,
         to: Data.address,
         amount: amountToSend,
-        assetIndex: ASSET_ID,
-        suggestedParams,
+        suggestedParams
       });
 
       const signedTxn = await myAlgoWallet.signTransaction(txn.toByte());
@@ -112,38 +85,11 @@ const Payment = ({ price }) => {
         .do();
       console.log(myAccountInfo);
 
-      // check if the payer address has Choice
-      const containsChoice = myAccountInfo.assets
-        ? myAccountInfo.assets.some(
-            (element) => element["asset-id"] === ASSET_ID
-          )
-        : false;
-      console.log(containsChoice);
-
-      // if the address has no ASAs
-      if (myAccountInfo.assets.length === 0) {
-        dispatch({
-          type: "alert_modal",
-          alertContent:
-            "You need to opt-in to Choice Coin in your Algorand Wallet.",
-        });
-        return;
-      }
-
-      if (!containsChoice) {
-        dispatch({
-          type: "alert_modal",
-          alertContent:
-            "You need to opt-in to Choice Coin in your Algorand Wallet.",
-        });
-        return;
-      }
-      // get balance of the voter
-      const balance = myAccountInfo.assets
-        ? myAccountInfo.assets.find(
-            (element) => element["asset-id"] === ASSET_ID
-          ).amount / 100
-        : 0;
+     
+      // get balance account algo
+      const balance = myAccountInfo.amount/1000000
+      console.log(balance, 'balance')
+      console.log(Data.amount, 'price')
 
       if (Data.amount > balance) {
         console.log(balance);
@@ -157,14 +103,13 @@ const Payment = ({ price }) => {
       }
 
       const suggestedParams = await algodClient.getTransactionParams().do();
-      const amountToSend = Data.amount * 100;
+      const amountToSend = Data.amount * 1000000;
 
-      const txn = algosdk.makeAssetTransferTxnWithSuggestedParamsFromObject({
+      const txn = algosdk.makePaymentTxnWithSuggestedParamsFromObject({
         from: isThereAddress,
         to: Data.address,
         amount: amountToSend,
-        assetIndex: ASSET_ID,
-        suggestedParams,
+        suggestedParams
       });
 
       const signedTxn = await window.AlgoSigner.signTxn([
@@ -209,40 +154,21 @@ const Payment = ({ price }) => {
 
       const myAccountInfo = await algodClient.accountInformation(address).do();
 
-      const containsChoice = myAccountInfo.assets
-        ? myAccountInfo.assets.some(
-            (element) => element["asset-id"] === ASSET_ID
-          )
-        : false;
-
-      if (myAccountInfo.assets.length === 0) {
-        alert("You need to opt-in to Choice Coin in your Algorand Wallet.");
-        return;
-      }
-
-      if (!containsChoice) {
-        alert("You need to opt-in to Choice Coin in your Algorand Wallet.");
-        return;
-      }
+      
       // get balance of the voter
-      const balance = myAccountInfo.assets
-        ? myAccountInfo.assets.find(
-            (element) => element["asset-id"] === ASSET_ID
-          ).amount / 100
-        : 0;
+      const balance = myAccountInfo.amount/1000000
       if (Data.amount > balance) {
         alert("You do not have sufficient balance to make this transaction.");
         return;
       }
 
       const suggestedParams = await algodClient.getTransactionParams().do();
-      const amountToSend = Data.amount * 100;
+      const amountToSend = Data.amount*1000000;
 
-      const txn = algosdk.makeAssetTransferTxnWithSuggestedParamsFromObject({
+      const txn = algosdk.makePaymentTxnWithSuggestedParamsFromObject({
         from: address,
         to: Data.address,
         amount: amountToSend,
-        assetIndex: ASSET_ID,
         suggestedParams,
       });
 
@@ -290,12 +216,12 @@ const Payment = ({ price }) => {
 
   const MakePayment = (address, amount) => {
     if(!walletType) {
-      dispatch({
-        type: "alert_modal",
-        alertContent: "Kindly connect your wallet to make payment! ",
-      });
-    } 
-   else if (walletType === "my-algo") {
+        dispatch({
+          type: "alert_modal",
+          alertContent: "Kindly connect your wallet to make payment! ",
+        });
+      } 
+    else if (walletType === "my-algo") {
       myAlgoConnect({ address, amount });
     } else if (walletType === "algosigner") {
       algoSignerConnect({ address, amount });
@@ -318,7 +244,7 @@ const Payment = ({ price }) => {
             >
               Make Payment
             </button>
-            <AlertModal />
+            <AlertAlgoModal />
           </div>
         </div>
       </div>
@@ -326,4 +252,4 @@ const Payment = ({ price }) => {
   );
 };
 
-export default Payment;
+export default AlgoPayment;

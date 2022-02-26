@@ -32,15 +32,18 @@ const Header = ({
           <img src={img} alt="logo" />
         )}
       </Link>
-      <div className="options">
-        <div onClick={toggleMode}>
+      <div className="options" >
+        <div  onClick={toggleMode}  className=" option mode">
+          <span>
           M
           {darkTheme ? (
             <i className="uil uil-brightness-low"></i>
           ) : (
             <i className="uil uil-moon"></i>
           )}
-          de
+          DE
+          </span>
+        
         </div>
         <div>
           <Link className="option" to="/shop">

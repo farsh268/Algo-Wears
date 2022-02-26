@@ -11,6 +11,7 @@ import CheckoutItem from "../Checkout-Item/Checkout-Item";
 import "./Checkout.scss";
 
 import styled from "styled-components";
+import AlgoModal from "../Algo-Payment-Modal/AlgoModal";
 import Modal from "../Payment-Modal/Modal";
 
 const Button = styled.button`
@@ -18,12 +19,22 @@ const Button = styled.button`
   padding: 16px 32px;
   border-radius: 4px;
   border: none;
-  background: #141414;
-  color: #fff;
+  background: var(--form-press);
+  color: var(--coin);
+  border : solid 1px lightblue;
   text-transform: uppercase;
   cursor: pointer;
 `;
 const Checkout = ({ cartItems, total }) => {
+//dropdown menu
+
+const [showAlgoModal, setShowAlgoModal] = useState(false);
+console.log(showAlgoModal)
+
+const openAlgoModal = () => {
+  setShowAlgoModal((prev) => !prev);
+};
+
   const [showModal, setShowModal] = useState(false);
 
   const openModal = () => {
@@ -62,6 +73,15 @@ const Checkout = ({ cartItems, total }) => {
       </div>
       <div className="payment">
         <StripeCheckoutButton price={total} />
+
+
+        <Button onClick={openAlgoModal}> Pay with Algo</Button>
+        <AlgoModal
+          showAlgoModal={showAlgoModal}
+          setShowAlgoModal={setShowAlgoModal}
+          price={total}
+        />
+
         <Button onClick={openModal}>Pay with Choice Coin</Button>
         <Modal
           showModal={showModal}
