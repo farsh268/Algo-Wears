@@ -4,13 +4,13 @@ import "firebase/compat/firestore";
 import "firebase/compat/auth";
 
 const config = {
-  apiKey: "AIzaSyD-l8BvN9i-0kAMZja_sC6iaz14R8yyJrc",
-  authDomain: "flx-db.firebaseapp.com",
-  projectId: "flx-db",
-  storageBucket: "flx-db.appspot.com",
-  messagingSenderId: "152042496617",
-  appId: "1:152042496617:web:2c369494712ce3006c38f8",
-  measurementId: "G-N67GXPW8BM",
+  apiKey: "AIzaSyDpyKICMc0Br5GHYeiXv1pntIujIqCDDRw",
+  authDomain: "algowears.firebaseapp.com",
+  projectId: "algowears",
+  storageBucket: "algowears.appspot.com",
+  messagingSenderId: "970013228172",
+  appId: "1:970013228172:web:64dfd6b8353d07a7620fa9",
+  measurementId: "G-M8770GJ5FS"
 };
 export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!userAuth) return;

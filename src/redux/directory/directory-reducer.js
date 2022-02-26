@@ -20,19 +20,19 @@ sections : [
            linkUrl : 'shop/sneakers'
         },
         {
-           title: 'women',
-           imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
+           title: 'belts',
+           imageUrl: 'https://media.istockphoto.com/photos/collection-of-leather-belts-on-a-wooden-table-picture-id1029383076?k=20&m=1029383076&s=612x612&w=0&h=TDOmHuEBOHX2t7wFQgBZzpCrp0YDbGK3RRjfiCs4vak=',
            size: 'large',
             id: 4,
-          linkUrl: 'shop/women'
+          linkUrl: 'shop/belts'
         },
          {
-            title: 'men',
-            imageUrl: 'https://i.ibb.co/R70vBrQ/men.png',
+            title: 'eyeglasses',
+            imageUrl: 'https://media.istockphoto.com/photos/youve-got-to-see-it-to-believe-it-picture-id1305313808?b=1&k=20&m=1305313808&s=170667a&w=0&h=j9-94X1snyej8Ftnnv8osmBMjINFGirRlFdrg6pumqY=',
            size: 'large',
             men : 'last',
             id: 5,
-            linkUrl: 'shop/men'
+            linkUrl: 'shop/eyeglasses'
   
         }
         ]

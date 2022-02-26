@@ -6,12 +6,12 @@ import MyAlgoConnect from "@randlabs/myalgo-connect";
 import WalletConnect from "@walletconnect/client";
 import QRCodeModal from "algorand-walletconnect-qrcode-modal";
 import { MdClose } from "react-icons/md";
-import "./Modal.scss";
+import "./AlgoModal.scss";
 import { selectDarkMode } from "../../redux/toggleTheme/toggle-selectors";
 import { createStructuredSelector } from "reselect";
-import Payment from "../Payment/Payment";
+import AlgoPayment from "../Algo-Payment/AlgoPayment";
 import { connect } from "react-redux";
-import img from '../../assets/choice.png'
+import img from '../../assets/algo.png'
 
 const Background = styled.div`
   width: 100%;
@@ -34,12 +34,14 @@ const ModalWrapper = styled.div`
   position: relative;
   z-index: 10;
   border-radius: 10px;
+
   @media screen and (max-width : 400px) and (min-width : 380px) {
-    width : 368px
+      width : 368px
+  }
+  @media screen and (max-width : 380px) and (min-width : 360px) {
+    width : 349px
 }
-@media screen and (max-width : 380px) and (min-width : 360px) {
-  width : 349px
-}
+
 `;
 
 const ModalContent = styled.div`
@@ -72,15 +74,15 @@ const CloseModalButton = styled(MdClose)`
   z-index: 10;
 `;
 
-const Modal = ({ showModal, setShowModal, price, darkTheme }) => {
-  const [choice_price, setChoice_price] = useState("");
+const AlgoModal = ({ showAlgoModal, setShowAlgoModal, price, darkTheme }) => {
+  const [algo_price, setAlgo_price] = useState("");
 
   useEffect(() => {
-    getChoicePrice();
+    getAlgoPrice();
   }, []);
 
   // getting choice price from liveCoinWatch API
-  const getChoicePrice = () => {
+  const getAlgoPrice = () => {
     fetch("https://api.livecoinwatch.com/coins/single", {
       method: "POST",
       headers: {
@@ -89,17 +91,17 @@ const Modal = ({ showModal, setShowModal, price, darkTheme }) => {
       },
       body: JSON.stringify({
         currency: "USD",
-        code: "CHOICE",
+        code: "ALGO",
         meta: true,
       }),
     })
       .then((res) => res.json())
       .then((data) => {
-        const choiceprice = data.rate.toFixed(8);
-        setChoice_price(choiceprice);
+        const algoprice = data.rate.toFixed(8);
+        setAlgo_price(algoprice);
       });
   };
-  const Convertedprice = Math.floor(price / choice_price);
+  const Convertedprice = Math.floor(price / algo_price);
 
   const isWalletConnected =
     localStorage.getItem("wallet-type") === null ? false : true;
@@ -110,7 +112,7 @@ const Modal = ({ showModal, setShowModal, price, darkTheme }) => {
     localStorage.removeItem("addresses");
     localStorage.removeItem("wallet-type");
     localStorage.removeItem("walletconnect");
-    setShowModal(false);
+    setShowAlgoModal(false);
     console.log("data");
   };
 
@@ -121,24 +123,24 @@ const Modal = ({ showModal, setShowModal, price, darkTheme }) => {
     config: {
       duration: 250,
     },
-    opacity: showModal ? 1 : 0,
-    transform: showModal ? `translateY(0%)` : `translateY(-100%)`,
+    opacity: showAlgoModal ? 1 : 0,
+    transform: showAlgoModal ? `translateY(0%)` : `translateY(-100%)`,
   });
 
   const closeModal = (e) => {
     if (modalRef.current === e.target) {
-      setShowModal(false);
+      setShowAlgoModal(false);
     }
   };
 
   const keyPress = useCallback(
     (e) => {
-      if (e.key === "Escape" && showModal) {
-        setShowModal(false);
+      if (e.key === "Escape" && showAlgoModal) {
+        setShowAlgoModal(false);
         console.log("I pressed");
       }
     },
-    [setShowModal, showModal]
+    [setShowAlgoModal, showAlgoModal]
   );
 
   const myAlgoConnect = async () => {
@@ -153,7 +155,7 @@ const Modal = ({ showModal, setShowModal, price, darkTheme }) => {
       localStorage.setItem("wallet-type", "my-algo");
       localStorage.setItem("address", address);
       localStorage.setItem("addresses", addresses);
-      setShowModal(false);
+      setShowAlgoModal(false);
       // window.location.reload();
     } catch (error) {
       console.log(error);
@@ -183,7 +185,7 @@ const Modal = ({ showModal, setShowModal, price, darkTheme }) => {
       localStorage.setItem("wallet-type", "walletconnect");
       localStorage.setItem("address", address);
       localStorage.setItem("addresses", addresses);
-      setShowModal(false);
+      setShowAlgoModal(false);
       // window.location.reload();
     });
 
@@ -233,7 +235,7 @@ const Modal = ({ showModal, setShowModal, price, darkTheme }) => {
         localStorage.setItem("wallet-type", "algosigner");
         localStorage.setItem("address", address);
         localStorage.setItem("addresses", addresses);
-        setShowModal(false);
+        setShowAlgoModal(false);
         // window.location.reload();
       }
     } catch (error) {
@@ -251,10 +253,10 @@ const Modal = ({ showModal, setShowModal, price, darkTheme }) => {
 
   return (
     <div className={`${darkTheme ? "dark_theme" : "light_theme"}`}>
-      {showModal ? (
+      {showAlgoModal ? (
         <Background onClick={closeModal} ref={modalRef}>
           <animated.div style={animation}>
-            <ModalWrapper showModal={showModal}>
+            <ModalWrapper showModal={showAlgoModal}>
               <ModalContent>
                 <div>
                   {!!isWalletConnected ? (
@@ -361,26 +363,25 @@ const Modal = ({ showModal, setShowModal, price, darkTheme }) => {
                   }}
                 >
                   <h3 style={{ margin: "0px" }}>Your Total is</h3>
-                  <h1 style={{ margin: "0px" }}>${price} ≈ {Convertedprice} <img style={{width : '32px', margin : '-5px'}} src={img} alt="algo "/></h1>
+                  <h1 style={{ margin: "0px" }}> ${price} ≈ {Convertedprice} <img style={{width : '26px', margin: '-2px'}} src={img} alt="algo "/></h1>
                 </div>
 
                 <p
                   style={{
                     color: "red",
                     textAlign: "center",
+                    margin : "4px",
                     fontSize: "14px",
-                    margin: "4px"
                   }}
                 >
                   *The above amount will be deducted from your wallet. Ensure
-                  you have enough funds in your wallet and You have Opted in
-                  ChoiceCoin ASA in your Algorand Wallet*
+                  you have enough funds in your wallet *
                 </p>
-                <Payment price={price} />
+                <AlgoPayment price={price} />
               </ModalContent>
               <CloseModalButton
                 aria-label="Close modal"
-                onClick={() => setShowModal((prev) => !prev)}
+                onClick={() => setShowAlgoModal((prev) => !prev)}
               />
             </ModalWrapper>
           </animated.div>
@@ -394,4 +395,4 @@ const mapStateToProps = createStructuredSelector({
   darkTheme: selectDarkMode,
 });
 
-export default connect(mapStateToProps)(Modal);
+export default connect(mapStateToProps)(AlgoModal);

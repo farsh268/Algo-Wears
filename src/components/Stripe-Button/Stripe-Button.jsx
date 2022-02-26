@@ -30,14 +30,14 @@ const StripeCheckoutButton = ({ price }) => {
   };
   return (
     <StripeCheckout
-      label="Pay Now"
-      name=" Flx Clothing Ltd"
+      label="Pay With Card"
+      name="AlgoWears"
       billingAddress
       shppingAddress
       image={img}
       description={`Your Total is $${price}`}
       amount={priceforStripe}
-      panelLabel="Pay Now"
+      panelLabel="Pay With Card"
       token={onToken}
       stripeKey={publishKey}
     />

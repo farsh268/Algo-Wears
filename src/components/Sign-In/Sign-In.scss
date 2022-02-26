@@ -24,13 +24,13 @@
     }
   }
   .forgot {
-    color: #1d1959;
+    color:  var(--forgot);
     font-family: "Roboto", sans-serif;
     margin-top: 20px;
     width: 44.3%;
 
     &:hover {
-      color: blue;
+      color: var(--forgot);
     }
   }
 }
