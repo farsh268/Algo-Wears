@@ -30,11 +30,9 @@ An Ecommerce web App built with ❤️ using React & Firebase for the Netlify x 
 
 Algowears is an e-commerce platform that takes full advantage of Stripe Api and crypto payments including payment with algo and choice coin.
 
-as it is desktop responsive
 ![image](https://github.com/Samuellyworld/Algo-Wears/blob/master/src/assets/homepage.png)
 
-it is also mobile responsive
-![image](https://github.com/Samuellyworld/Algo-Wears/blob/master/src/assets/mobile.png)
+
 
 Web-Flow
 ============
