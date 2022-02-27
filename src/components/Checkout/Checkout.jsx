@@ -24,6 +24,14 @@ const Button = styled.button`
   border : solid 1px lightblue;
   text-transform: uppercase;
   cursor: pointer;
+
+  @media screen and (min-width: 995px) and (max-width: 1200px){
+    padding: 5px;
+  }
+ @media screen and (min-width: 800px) and (max-width: 994px) {
+   font-size : 10px;
+   padding : 0px;
+ }
 `;
 const Checkout = ({ cartItems, total }) => {
 //dropdown menu
