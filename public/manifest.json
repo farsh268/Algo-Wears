@@ -1,7 +1,7 @@
 {
-  "short_name": "FLX Clothing",
-  "name": "FLX Clothing LTD",
-  "description": "Flx Clothing Ltd is an E-commerce clothing store, get discount and pay with your card",
+  "short_name": "AlgoWears Clothing",
+  "name": "AlgoWears Clothing LTD",
+  "description": "AlgoWears is an E-commerce clothing store,Select what wears you want.Payment is accepted with card and algo",
   "orientation": "portrait",
   "Scope": "/",
   "icons":  [
