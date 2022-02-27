@@ -124,7 +124,7 @@ Contributors
 
 License
 ===========
-[Apache]()
+- [Apache](https://github.com/Samuellyworld/Algo-Wears/blob/master/License.txt)
 
 
 
