@@ -10,17 +10,15 @@ const Payment = ({ price }) => {
   const ASSET_ID = 21364625;
   const dispatch = useDispatch();
 
-  const algod_token = {
-    "X-API-Key": "EaUlAQzl9Z831PDt5GTxV7fMjYk9CsSK2VmERE4T",
-  };
-  const algod_address = "https://testnet-algorand.api.purestake.io/ps2";
-  const headers = "";
-
-  const algodClient = new algosdk.Algodv2(algod_token, algod_address, headers);
+  const algodClient = new algosdk.Algodv2(
+    "",
+    "https://api.algoexplorer.io",
+    ""
+  );
   const walletType = localStorage.getItem("wallet-type");
   const isThereAddress = localStorage.getItem("address");
   const walletAddress =
-    "IHFYDNOXHI5GOMVUYGWL6WBG6C3PLNWHH22GJKJMV6JKLUJX5YAD6EEHPY";
+    "CPR3F57KFKNW7M2CLIOFKHGTFP4D27HJHRMN7OAT4CGN3MW544DDWON4YM";
   const myAlgoWallet = new MyAlgoConnect();
 
   const myAlgoConnect = async (Data) => {
