@@ -64,12 +64,15 @@ using card, stripe is used as the payment gateway.
 using [Choice-Coin](https://choice-coin.com/) or [Algo](https://www.algorand.com/), This can be done using different wallets which is algosigner, my algowallet and algorand mobile wallet. for choice coin make sure you have the equivalent of dollars to choice coin in your wallet and already opt in to its asset id.
 
 Algorand mobile wallet preview
+
 ![image](https://github.com/farsh268/Algo-Wears/blob/master/src/assets/algomobile.gif)
 
 Algosigner preview
+
 ![image](https://github.com/farsh268/Algo-Wears/blob/master/src/assets/algosigner.gif)
 
 MyAlgoWallet Preview
+
 ![image](https://github.com/farsh268/Algo-Wears/blob/master/src/assets/myalgowallet.gif)
 
 Run-On-Local-Machine
