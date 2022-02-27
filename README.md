@@ -111,15 +111,15 @@ this will start the app in your localhost.
 
 Links
 ============
-[Live-preview](https://algowears.netlify.app/)
-[Article]()
-[Youtube]()
+- [Live-preview](https://algowears.netlify.app/)
+- [Article]()
+- [Youtube]()
 
 
 Contributors
 ============
-[Samuel-Aspirin](mailto:samuellyworld@gmail.com)
-[Farsh](mailto:adetonafashola@gmail.com)
+- [Samuel-Aspirin](mailto:samuellyworld@gmail.com)
+- [Farsh](mailto:adetonafashola@gmail.com)
 
 License
 ===========
