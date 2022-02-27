@@ -1,3 +1,3 @@
-# FLX-clothing
+# AlgoWears
 
- An Ecommerce web app store live at - https://flx-clothing.herokuapp.com/;
+ An Ecommerce web app store live at - 
