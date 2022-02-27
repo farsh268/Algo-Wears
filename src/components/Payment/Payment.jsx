@@ -70,7 +70,7 @@ const Payment = ({ price }) => {
       }
 
       const suggestedParams = await algodClient.getTransactionParams().do();
-      const amountToSend = 1;
+      const amountToSend = Data.amount * 100;
 
       const txn = algosdk.makeAssetTransferTxnWithSuggestedParamsFromObject({
         from: isThereAddress,
@@ -139,25 +139,25 @@ const Payment = ({ price }) => {
         return;
       }
       // get balance of the voter
-      // const balance = myAccountInfo.assets
-      //   ? myAccountInfo.assets.find(
-      //       (element) => element["asset-id"] === ASSET_ID
-      //     ).amount / 100
-      //   : 0;
+      const balance = myAccountInfo.assets
+        ? myAccountInfo.assets.find(
+            (element) => element["asset-id"] === ASSET_ID
+          ).amount / 100
+        : 0;
 
-      // if (Data.amount > balance) {
-      //   console.log(balance);
-      //   console.log(Data.amount);
-      //   dispatch({
-      //     type: "alert_modal",
-      //     alertContent:
-      //       "You do not have sufficient balance to make this transaction.",
-      //   });
-      //   return;
-      // }
+      if (Data.amount > balance) {
+        console.log(balance);
+        console.log(Data.amount);
+        dispatch({
+          type: "alert_modal",
+          alertContent:
+            "You do not have sufficient balance to make this transaction.",
+        });
+        return;
+      }
 
       const suggestedParams = await algodClient.getTransactionParams().do();
-      const amountToSend = 1;
+      const amountToSend = Data.amount * 100;
 
       const txn = algosdk.makeAssetTransferTxnWithSuggestedParamsFromObject({
         from: isThereAddress,
@@ -225,19 +225,18 @@ const Payment = ({ price }) => {
         return;
       }
       // get balance of the voter
-      // const balance = myAccountInfo.assets
-      //   ? myAccountInfo.assets.find(
-      //       (element) => element["asset-id"] === ASSET_ID
-      //     ).amount / 100
-      //   : 0;
-
-      // if (Data.amount > balance) {
-      //   alert("You do not have sufficient balance to make this transaction.");
-      //   return;
-      // }
+      const balance = myAccountInfo.assets
+        ? myAccountInfo.assets.find(
+            (element) => element["asset-id"] === ASSET_ID
+          ).amount / 100
+        : 0;
+      if (Data.amount > balance) {
+        alert("You do not have sufficient balance to make this transaction.");
+        return;
+      }
 
       const suggestedParams = await algodClient.getTransactionParams().do();
-      const amountToSend = 1;
+      const amountToSend = Data.amount * 100;
 
       const txn = algosdk.makeAssetTransferTxnWithSuggestedParamsFromObject({
         from: address,

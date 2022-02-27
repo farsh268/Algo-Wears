@@ -7,7 +7,6 @@ import QRCodeModal from "algorand-walletconnect-qrcode-modal";
 import AlertAlgoModal from "../Algo-Payment-Modal/AlertAlgoModal";
 
 const AlgoPayment = ({ price }) => {
-  
   const dispatch = useDispatch();
 
   const algod_token = {
@@ -29,10 +28,9 @@ const AlgoPayment = ({ price }) => {
         .accountInformation(isThereAddress)
         .do();
 
-
       //   get balance of algo
-      const balance = myAccountInfo.amount/1000000
-      console.log(balance)
+      const balance = myAccountInfo.amount / 1000000;
+      console.log(balance);
 
       if (Data.amount > balance) {
         dispatch({
@@ -44,13 +42,13 @@ const AlgoPayment = ({ price }) => {
       }
 
       const suggestedParams = await algodClient.getTransactionParams().do();
-      const amountToSend = Data.amount*1000000;
+      const amountToSend = Data.amount * 1000000;
 
       const txn = algosdk.makePaymentTxnWithSuggestedParamsFromObject({
         from: isThereAddress,
         to: Data.address,
         amount: amountToSend,
-        suggestedParams
+        suggestedParams,
       });
 
       const signedTxn = await myAlgoWallet.signTransaction(txn.toByte());
@@ -85,11 +83,10 @@ const AlgoPayment = ({ price }) => {
         .do();
       console.log(myAccountInfo);
 
-     
       // get balance account algo
-      const balance = myAccountInfo.amount/1000000
-      console.log(balance, 'balance')
-      console.log(Data.amount, 'price')
+      const balance = myAccountInfo.amount / 1000000;
+      console.log(balance, "balance");
+      console.log(Data.amount, "price");
 
       if (Data.amount > balance) {
         console.log(balance);
@@ -109,7 +106,7 @@ const AlgoPayment = ({ price }) => {
         from: isThereAddress,
         to: Data.address,
         amount: amountToSend,
-        suggestedParams
+        suggestedParams,
       });
 
       const signedTxn = await window.AlgoSigner.signTxn([
@@ -154,16 +151,15 @@ const AlgoPayment = ({ price }) => {
 
       const myAccountInfo = await algodClient.accountInformation(address).do();
 
-      
       // get balance of the voter
-      const balance = myAccountInfo.amount/1000000
+      const balance = myAccountInfo.amount / 1000000;
       if (Data.amount > balance) {
         alert("You do not have sufficient balance to make this transaction.");
         return;
       }
 
       const suggestedParams = await algodClient.getTransactionParams().do();
-      const amountToSend = Data.amount*1000000;
+      const amountToSend = Data.amount * 1000000;
 
       const txn = algosdk.makePaymentTxnWithSuggestedParamsFromObject({
         from: address,
@@ -215,13 +211,12 @@ const AlgoPayment = ({ price }) => {
   };
 
   const MakePayment = (address, amount) => {
-    if(!walletType) {
-        dispatch({
-          type: "alert_modal",
-          alertContent: "Kindly connect your wallet to make payment! ",
-        });
-      } 
-    else if (walletType === "my-algo") {
+    if (!walletType) {
+      dispatch({
+        type: "alert_modal",
+        alertContent: "Kindly connect your wallet to make payment! ",
+      });
+    } else if (walletType === "my-algo") {
       myAlgoConnect({ address, amount });
     } else if (walletType === "algosigner") {
       algoSignerConnect({ address, amount });
