@@ -112,9 +112,9 @@ this will start the app in your localhost.
 
 Links
 ============
-- [Live-preview](https://algowears.netlify.app/)
-- [Article]()
-- [Youtube]()
+- [Netlify](https://algowears.netlify.app/)
+- [Article](https://kenny82.hashnode.dev/algowears-ecommerce-fashion-store)
+- [Youtube](https://www.youtube.com/watch?v=B0drPsuyz1c)
 
 
 Contributors
