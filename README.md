@@ -3,7 +3,7 @@
 ![image](https://github.com/farsh268/Algo-Wears/blob/master/src/assets/algowear.gif)
 
 - This is our submission for netlify-hashnode hackathon
-- [Samuel-Aspirin👨🏼‍🍳](mailto:samuellyworld@gmail.com) and [Farsh](mailto:adetonafashola@gmail.com) built this web application in line to show how easy to set up payments with [Choice-Coin](https://choice-coin.com/), [Algo](https://www.algorand.com/) and [Stripe-API](https://stripe.com/docs/api)
+- [Samuel-Aspirin👨🏼‍🍳](mailto:samuellyworld@gmail.com) and [Wakeel Kehinde](mailto:adetonafashola@gmail.com) built this web application in line to show how easy to set up payments with [Choice-Coin](https://choice-coin.com/), [Algo](https://www.algorand.com/) and [Stripe-API](https://stripe.com/docs/api)
 - We've had too much fun building this, and we'd like to take you briefly through our thoughts and creative process.
 
 
