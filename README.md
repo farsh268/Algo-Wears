@@ -120,7 +120,7 @@ Links
 Contributors
 ============
 - [Samuel-Aspirin](mailto:samuellyworld@gmail.com)
-- [Farsh](mailto:adetonafashola@gmail.com)
+- [Wakeel Kehinde](mailto:adetonafashola@gmail.com)
 
 License
 ===========
